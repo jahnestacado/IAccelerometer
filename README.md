@@ -1,7 +1,7 @@
 IAccelerometer
 ============
 
-###Easy Integration of Androids Accelerometer sensor
+###Easy Integration of Android Accelerometer sensor
 
 The example code provides an easy implementation of Android Accelerometer sensor from a non-Activity class
 
