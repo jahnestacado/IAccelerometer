@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements AccelerometerActivity {
+public class MainActivity extends Activity implements OnAccelerometerChangeListener {
 	private AccelerometerSensor sensor;
 	private TextView textViewX;
 	private TextView textViewY;
@@ -18,7 +18,6 @@ public class MainActivity extends Activity implements AccelerometerActivity {
 		textViewY = (TextView) findViewById(R.id.textViewY);
 		textViewZ = (TextView) findViewById(R.id.textViewZ);
 		sensor = new AccelerometerSensor(this);
-
 	}
 
 	@Override

@@ -8,18 +8,17 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class AccelerometerSensor implements SensorEventListener {
-	private SensorManager mSensorManager;
-	private Sensor mAccelerometer;
-	private AccelerometerActivity sensorActivity;
+	private SensorManager sensorManager;
+	private Sensor accelerometer;
+	private OnAccelerometerChangeListener sensorActivity;
 	
-	
-	public AccelerometerSensor(AccelerometerActivity sensorActivity){
+	public AccelerometerSensor(OnAccelerometerChangeListener sensorActivity){
 		   this.sensorActivity = sensorActivity;
 		   //get the sensor service
 		   Activity activity = (Activity) sensorActivity;
-		   mSensorManager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
+		   sensorManager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
 		   //get the accelerometer sensor
-		   mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		   accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 	}
 
 	@Override
@@ -37,12 +36,12 @@ public class AccelerometerSensor implements SensorEventListener {
 	
     // Must be called in onResume() of the Activity
 	public void registerSensor() {
-		mSensorManager.registerListener(this, mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+		sensorManager.registerListener(this, accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
     // Must be called in onPause() of the Activity
 	public void unregisterSensor() {
-		mSensorManager.unregisterListener(this);
+		sensorManager.unregisterListener(this);
 	}
 
 }
